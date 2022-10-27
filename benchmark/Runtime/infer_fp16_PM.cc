@@ -64,10 +64,9 @@ int main(int argc, char* argv[]) {
     fake_input_tensors[0].SetExternalData({1,3,Height,Width},fastdeploy::FDDataType::FP32,input_data.data(),fastdeploy::Device::CPU);
     std::vector<fastdeploy::FDTensor> output_tensors;
     
-
     // Warm UP
     int warm_up_times = 100;
-    for(int i =0 ; i < warm_up_times; ++i){
+    for(int i = 0 ; i < warm_up_times; ++i){
         if (!run_time.Infer(fake_input_tensors, &output_tensors)) {
            fastdeploy::FDERROR << "Failed to inference." << std::endl;
            return false;
@@ -79,7 +78,7 @@ int main(int argc, char* argv[]) {
     std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
     start = std::chrono::high_resolution_clock::now();
 
-    for(int i =0 ; i < perf_repeat_time; ++i){
+    for(int i = 0 ; i < perf_repeat_time; ++i){
         if (!run_time.Infer(fake_input_tensors, &output_tensors)) {
            fastdeploy::FDERROR << "Failed to inference." << std::endl;
            return false;
