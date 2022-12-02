@@ -1,3 +1,4 @@
+from pickletools import optimize
 import fastdeploy as fd
 import cv2
 import os
@@ -37,6 +38,12 @@ def build_option(args):
 
     if args.use_trt:
         option.use_trt_backend()
+
+    # export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/python3.7/dist-packages/fastdeploy/libs/third_libs/paddlelite/lib/
+    option.use_lite_backend()
+    option.use_cann()
+    option.set_lite_nnadapter_device_names(["huawei_ascend_npu"])
+
     return option
 
 
