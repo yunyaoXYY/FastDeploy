@@ -363,6 +363,16 @@ class RuntimeOption:
         """
         return self._option.set_lite_power_mode(mode)
 
+    def use_cann(self):
+        """Set POWER mode while using Paddle Lite backend on ARM CPU.
+        """
+        return self._option.use_cann()
+
+    def set_lite_nnadapter_device_names(self, device_names):
+        """Set POWER mode while using Paddle Lite backend on ARM CPU.
+        """
+        return self._option.set_lite_nnadapter_device_names(device_names)
+
     def set_trt_input_shape(self,
                             tensor_name,
                             min_shape,
